@@ -10,7 +10,7 @@ print('+-----------------------+')
 CHOSEN_WORD = 'programming'
 
 guessed_word = ['_'] * len(CHOSEN_WORD)
-ATTEMPTS_LEFT = 6 
+ATTEMPTS_LEFT = 6
 guessed_letters = []
 
 def current_state():
