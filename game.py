@@ -50,8 +50,12 @@ def guess_the_word():
         current_state()
 
     if '_' not in guessed_word:
-        print(f'Congratulations, you guessed the word: {CHOSEN_WORD}')
+        print('+----------------------+')
+        print('|***Congratulations!***|')
+        print('+----------------------+')
+        print(f'\nYou guessed the word: {CHOSEN_WORD.upper()}\n')
     else:
-        print(f'Sorry, you ran out of attempts. The word was: {CHOSEN_WORD}')
+        print('...SOoooOORRRrrrYYyyy...')
+        print(f'\nYou ran out of attempts. The word was: {CHOSEN_WORD.upper()}\n')
 
 guess_the_word()
