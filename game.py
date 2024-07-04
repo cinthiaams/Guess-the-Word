@@ -10,7 +10,7 @@ print('+-----------------------+')
 CHOSEN_WORD = 'programming'
 
 guessed_word = ['_'] * len(CHOSEN_WORD)
-ATTEMPTS_LEFT = 6
+ATTEMPTS_LEFT = 6 
 guessed_letters = []
 
 def current_state():
@@ -21,11 +21,11 @@ def current_state():
 
 def guess_the_word():
     '''Main function to run the Guess the Word game.'''
-    attempts_left = ATTEMPTS_LEFT
+    global ATTEMPTS_LEFT # pylint: disable=global-statement
 
-    print("Welcome to Guess the Word!\n")
+    print("\nWelcome to Guess the Word!\n")
 
-    while attempts_left > 0 and '_' in guessed_word:
+    while ATTEMPTS_LEFT > 0 and '_' in guessed_word:
         guess = input('Guess a letter: ').lower()
 
         if len(guess) != 1 or not guess.isalpha():
@@ -44,13 +44,13 @@ def guess_the_word():
                     guessed_word[index] = guess
 
         else:
-            attempts_left -= 1
+            ATTEMPTS_LEFT -= 1
             print(f'The letter {guess} is not in the word.')
 
         current_state()
 
     if '_' not in guessed_word:
-        print(f'Congratulations! You guessed the word: {CHOSEN_WORD}')
+        print(f'Congratulations, you guessed the word: {CHOSEN_WORD}')
     else:
         print(f'Sorry, you ran out of attempts. The word was: {CHOSEN_WORD}')
 
