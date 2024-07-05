@@ -53,9 +53,9 @@ def guess_the_word():
         current_state()
 
     if '_' not in guessed_word:
-        print('+----------------------+')
-        print('|***Congratulations!***|')
-        print('+----------------------+')
+        print('+------------------------+')
+        print('|****Congratulations!****|')
+        print('+------------------------+')
         print(f'\nYou guessed the word: {chosen_word.upper()}\n')
     else:
         print('...SOoooOORRRrrrYYyyy...')
