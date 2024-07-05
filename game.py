@@ -52,8 +52,7 @@ def choose_category():
         chosen_category = input('\nEnter a category: ').lower()
         if chosen_category in word_categories:
             return  chosen_category
-        else:
-            print('invalid category, Please try again.')
+        print('invalid category, Please try again.')
 
 def current_state(attempts_left, guessed_word, guessed_letters):
     '''Display the current state of the game.'''
