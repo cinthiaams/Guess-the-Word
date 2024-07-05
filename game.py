@@ -3,43 +3,15 @@ Guess The Word Game: A simple word guessing game.
 Try to guess the word letter by letter within a limited number of attempts.
 '''
 import random
+import json
 
 print('\n+-------------------------+')
 print('|**** Guess The Word! ****|')
 print('+-------------------------+')
 
-word_categories = {
-    'fruit': [
-        'apple', 'banana', 'cherry', 'grape', 'kiwi',
-        'mango', 'orange', 'peach', 'pear', 'plum',
-        'watermelon', 'strawberry'
-    ],
-    'animal': [
-        'elephant', 'tiger', 'kangaroo', 'giraffe', 'alligator',
-        'zebra', 'lion', 'hippopotamus', 'crocodile', 'gorilla',
-        'chimpanzee'
-    ],
-    'city': [
-        'paris', 'london', 'berlin', 'tokyo', 'newyork',
-        'losangeles', 'sydney', 'toronto', 'dubai', 'rome',
-        'madrid', 'moscow'
-    ],
-    'programming': [
-        'python', 'javascript', 'java', 'ruby', 'perl',
-        'swift', 'kotlin', 'typescript', 'cplusplus', 'go',
-        'rust'
-    ],
-    'color': [
-        'red', 'blue', 'green', 'yellow', 'purple',
-        'orange', 'pink', 'brown', 'black', 'white',
-        'gray'
-    ],
-    'adjective': [
-        'tall', 'beautiful', 'pretty', 'smelly', 'long',
-        'short', 'smart', 'ugly', 'fat', 'slow',
-        'sweet', 'small', 'dangerous', 'dear', 'angry'
-    ]
-}
+# Load words from JSON file
+with open('words.json', 'r', encoding='utf-8') as file:
+    word_categories = json.load(file)
 
 print("\nWelcome to Guess the Word!\n")
 
