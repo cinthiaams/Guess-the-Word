@@ -4,31 +4,77 @@ Try to guess the word letter by letter within a limited number of attempts.
 '''
 import random
 
-print('+-----------------------+')
-print('|*** Guess The Word! ***|')
-print('+-----------------------+')
+print('+-------------------------+')
+print('|**** Guess The Word! ****|')
+print('+-------------------------+')
 
-word_list = ['programming', 'watermelon', 'water', 'elephant', 'music', 'portugal']
-chosen_word = random.choice(word_list)
+word_categories = {
+    'fruit': [
+        'apple', 'banana', 'cherry', 'grape', 'kiwi',
+        'mango', 'orange', 'peach', 'pear', 'plum',
+        'watermelon', 'strawberry'
+    ],
+    'animal': [
+        'elephant', 'tiger', 'kangaroo', 'giraffe', 'alligator',
+        'zebra', 'lion', 'hippopotamus', 'crocodile', 'gorilla',
+        'chimpanzee'
+    ],
+    'city': [
+        'paris', 'london', 'berlin', 'tokyo', 'newyork',
+        'losangeles', 'sydney', 'toronto', 'dubai', 'rome',
+        'madrid', 'moscow'
+    ],
+    'programming': [
+        'python', 'javascript', 'java', 'ruby', 'perl',
+        'swift', 'kotlin', 'typescript', 'cplusplus', 'go',
+        'rust'
+    ],
+    'color': [
+        'red', 'blue', 'green', 'yellow', 'purple',
+        'orange', 'pink', 'brown', 'black', 'white',
+        'gray'
+    ],
+    'adjective': [
+        'tall', 'beautiful', 'pretty', 'smelly', 'long',
+        'short', 'smart', 'ugly', 'fat', 'slow',
+        'sweet', 'small', 'dangerous', 'dear', 'angry'
+    ]
+}
 
-guessed_word = ['_'] * len(chosen_word)
-ATTEMPTS_LEFT = 6
-guessed_letters = []
+print("\nWelcome to Guess the Word!\n")
 
-def current_state():
+def choose_category():
+    '''Prompt the user to choose a category'''
+    print('\nChoose one of these categories:')
+    for category in word_categories:
+        print(f'-{category}')
+    while True:
+        chosen_category = input('\nEnter a category: ').lower()
+        if chosen_category in word_categories:
+            return  chosen_category
+        else:
+            print('invalid category, Please try again.')
+
+def current_state(attempts_left, guessed_word, guessed_letters):
     '''Display the current state of the game.'''
     print(f'\nCurrent word: {" ".join(guessed_word)}')
-    print(f'Attempts left: {ATTEMPTS_LEFT}')
+    print(f'Attempts left: {attempts_left}')
     print(f'Guessed letters: {", ".join(guessed_letters)}\n')
 
 def guess_the_word():
+
     '''Main function to run the Guess the Word game.'''
-    global ATTEMPTS_LEFT # pylint: disable=global-statement
 
-    print("\nWelcome to Guess the Word!\n")
-    print(f'\nCurrent word: {" ".join(guessed_word)}\n')
+    chosen_category = choose_category()
+    chosen_word = random.choice(word_categories[chosen_category])
 
-    while ATTEMPTS_LEFT > 0 and '_' in guessed_word:
+    guessed_word = ['_'] * len(chosen_word)
+    attempts_left = 6
+    guessed_letters = []
+
+    current_state(attempts_left, guessed_word, guessed_letters)
+
+    while attempts_left > 0 and '_' in guessed_word:
         guess = input('Guess a letter: ').lower()
 
         if len(guess) != 1 or not guess.isalpha():
@@ -47,10 +93,10 @@ def guess_the_word():
                     guessed_word[index] = guess
 
         else:
-            ATTEMPTS_LEFT -= 1
+            attempts_left -= 1
             print(f'The letter {guess} is not in the word.')
 
-        current_state()
+        current_state(attempts_left, guessed_word, guessed_letters)
 
     if '_' not in guessed_word:
         print('+------------------------+')
@@ -61,4 +107,5 @@ def guess_the_word():
         print('...SOoooOORRRrrrYYyyy...')
         print(f'\nYou ran out of attempts. The word was: {chosen_word.upper()}\n')
 
-guess_the_word()
+if __name__ == "__main__":
+    guess_the_word()
