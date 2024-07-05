@@ -4,9 +4,9 @@ Try to guess the word letter by letter within a limited number of attempts.
 '''
 import random
 
-print('+-----------------------+')
-print('|*** Guess The Word! ***|')
-print('+-----------------------+')
+print('+-------------------------+')
+print('|**** Guess The Word! ****|')
+print('+-------------------------+')
 
 word_categories = {
     'fruit': [
