@@ -104,9 +104,9 @@ def guess_the_word():
         print('+------------------------+')
         print(f'\nYou guessed the word: {chosen_word.upper()}\n')
     else:
-        print('+-------------+')
-        print('|  GAME OVER  |')
-        print('+-------------+')
+        print('+---------------+')
+        print('|   GAME OVER   |')
+        print('+---------------+')
         print(f'\nYou ran out of attempts. The word was: {chosen_word.upper()}\n')
 
 if __name__ == "__main__":
