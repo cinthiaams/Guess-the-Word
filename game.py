@@ -4,7 +4,7 @@ Try to guess the word letter by letter within a limited number of attempts.
 '''
 import random
 
-print('+-------------------------+')
+print('\n+-------------------------+')
 print('|**** Guess The Word! ****|')
 print('+-------------------------+')
 
@@ -104,7 +104,9 @@ def guess_the_word():
         print('+------------------------+')
         print(f'\nYou guessed the word: {chosen_word.upper()}\n')
     else:
-        print('...SOoooOORRRrrrYYyyy...')
+        print('+-------------+')
+        print('|  GAME OVER  |')
+        print('+-------------+')
         print(f'\nYou ran out of attempts. The word was: {chosen_word.upper()}\n')
 
 if __name__ == "__main__":
